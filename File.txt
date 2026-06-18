@@ -1,5 +1,10 @@
 cd /tmp
 
-curl -L -O https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/iwlwifi-6000-4.ucode
-curl -L -O https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/iwlwifi-6000-5.ucode
-curl -L -O https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/iwlwifi-6000-6.ucode
+curl -L -o iwlwifi-6000-4.ucode \
+https://raw.githubusercontent.com/wkennington/linux-firmware/master/iwlwifi-6000-4.ucode
+
+curl -L -o iwlwifi-6000-5.ucode \
+https://raw.githubusercontent.com/wkennington/linux-firmware/master/iwlwifi-6000-5.ucode
+
+curl -L -o iwlwifi-6000-6.ucode \
+https://raw.githubusercontent.com/wkennington/linux-firmware/master/iwlwifi-6000-6.ucode
