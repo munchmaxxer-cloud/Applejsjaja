@@ -1,10 +1,10 @@
-cd /tmp
+sudo dnf groupinstall "Development Tools"
+sudo dnf install gcc-c++ cmake imlib2-devel libXft-devel libXinerama-devel libXrandr-devel
 
-curl -L -o iwlwifi-6000-4.ucode \
-https://raw.githubusercontent.com/wkennington/linux-firmware/master/iwlwifi-6000-4.ucode
-
-curl -L -o iwlwifi-6000-5.ucode \
-https://raw.githubusercontent.com/wkennington/linux-firmware/master/iwlwifi-6000-5.ucode
-
-curl -L -o iwlwifi-6000-6.ucode \
-https://raw.githubusercontent.com/wkennington/linux-firmware/master/iwlwifi-6000-6.ucode
+git clone https://github.com/ice-wm/icewm.git
+cd icewm
+mkdir build
+cd build
+cmake ..
+make -j$(nproc)
+sudo make install
