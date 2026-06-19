@@ -1,10 +1,23 @@
-sudo dnf groupinstall "Development Tools"
-sudo dnf install gcc-c++ cmake imlib2-devel libXft-devel libXinerama-devel libXrandr-devel
+import sqlite3
+from tqdm import tqdm
 
-git clone https://github.com/ice-wm/icewm.git
-cd icewm
-mkdir build
-cd build
-cmake ..
-make -j$(nproc)
-sudo make install
+db_path = "en.db"
+output_path = "wiki.txt"
+
+conn = sqlite3.connect(db_path)
+cursor = conn.cursor()
+
+cursor.execute("SELECT COUNT(*) FROM wiki_articles")
+total = cursor.fetchone()[0]
+
+cursor.execute("SELECT title, text FROM wiki_articles")
+
+with open(output_path, "w", encoding="utf-8") as f:
+    for title, text in tqdm(cursor, total=total):
+        if text:
+            f.write(title + "\n")
+            f.write(text + "\n\n")
+
+conn.close()
+
+print("Done!")
