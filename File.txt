@@ -1,20 +1,13 @@
-from tokenizers import ByteLevelBPETokenizer
+from tokenizers import Tokenizer, models, trainers, pre_tokenizers
 
-tokenizer = ByteLevelBPETokenizer()
+tokenizer = Tokenizer(models.BPE())
+tokenizer.pre_tokenizer = pre_tokenizers.ByteLevel()
 
-tokenizer.train(
-    files=["wiki.txt"],
+trainer = trainers.BpeTrainer(
     vocab_size=16000,
     min_frequency=2,
-    special_tokens=[
-        "<s>",
-        "<pad>",
-        "</s>",
-        "<unk>",
-        "<mask>"
-    ]
+    special_tokens=["<s>", "<pad>", "</s>", "<unk>", "<mask>"]
 )
 
-tokenizer.save_model("tokenizer")
-
-print("Tokenizer trained!")
+tokenizer.train(["wiki.txt"], trainer)
+tokenizer.save("tokenizer.json")
