@@ -1,13 +1,16 @@
-from tokenizers import Tokenizer, models, trainers, pre_tokenizers
-
-tokenizer = Tokenizer(models.BPE())
-tokenizer.pre_tokenizer = pre_tokenizers.ByteLevel()
-
-trainer = trainers.BpeTrainer(
-    vocab_size=16000,
-    min_frequency=2,
-    special_tokens=["<s>", "<pad>", "</s>", "<unk>", "<mask>"]
-)
-
-tokenizer.train(["wiki.txt"], trainer)
-tokenizer.save("tokenizer.json")
+sudo dnf install -y epel-release && sudo dnf install -y \
+tor torsocks proxychains-ng privoxy dnscrypt-proxy unbound \
+firejail bubblewrap flatpak \
+nmap masscan amass theharvester recon-ng \
+wireshark tcpdump tshark ettercap bettercap netcat socat \
+burpsuite zaproxy sqlmap ffuf gobuster dirsearch nikto wfuzz \
+hashcat john hydra crunch \
+metasploit-framework exploitdb \
+ghidra radare2 cutter gdb strace ltrace binwalk \
+volatility3 autopsy sleuthkit foremost \
+aircrack-ng kismet hcxdumptool \
+docker podman qemu-kvm virt-manager vagrant \
+adb fastboot scrcpy \
+python3 python3-pip git gcc clang go rust cargo \
+tmux neovim vim nano htop btop ncdu ripgrep bat fzf jq curl wget rsync \
+keepassxc veracrypt syncthing onionshare
